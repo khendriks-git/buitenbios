@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO Tags -->
+    <title>Buitenbios Amsterdam 2025 | De Ultieme Gids voor Openluchtcinema</title>
+    <meta name="description" content="Vind alle openluchtbioscopen, buitenfilms en open-air cinema in Amsterdam voor augustus en september 2025. Filter op datum, locatie en prijs. Inclusief programma, links en live weerbericht.">
+    <meta name="keywords" content="buitenbioscoop, openluchtbioscoop, open air cinema, Amsterdam, film, 2025, augustus, september, Pluk de Nacht, Movies at H'ART, West Beach Film Festival, Pllek, Cinetree">
+    <meta name="author" content="Buitenbios Amsterdam Gids">
+
+    <!-- Social Media / Open Graph -->
+    <meta property="og:title" content="Buitenbios Amsterdam 2025 | De Ultieme Gids">
+    <meta property="og:description" content="Alle openlucht filmavonden in Amsterdam (aug/sep 2025) op één plek.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://jouw-website-url.nl">
+    <meta property="og:image" content="https://jouw-website-url.nl/assets/og-image.jpg">
+    
+    <!-- Styles and Fonts -->
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="container">
+            <h1>Buitenbios Amsterdam</h1>
+            <p class="subtitle">Jouw complete gids voor augustus & september 2025</p>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- Filter Section -->
+        <section id="filters" class="filter-section">
+            <div class="filter-group">
+                <label for="date-filter">Filter op maand:</label>
+                <select id="date-filter" aria-label="Filter op maand">
+                    <option value="all">Alle Data</option>
+                    <option value="august">Augustus</option>
+                    <option value="september">September</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <label for="price-filter">Filter op prijs:</label>
+                <select id="price-filter" aria-label="Filter op prijs">
+                    <option value="all">Alle Prijzen</option>
+                    <option value="free">Gratis</option>
+                    <option value="paid">Betaald</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <label for="district-filter">Filter op stadsdeel:</label>
+                <select id="district-filter" aria-label="Filter op stadsdeel">
+                    <option value="all">Alle Stadsdelen</option>
+                    <option value="Centrum">Centrum</option>
+                    <option value="Noord">Noord</option>
+                    <option value="West">West</option>
+                    <option value="Nieuw-West">Nieuw-West</option>
+                    <option value="Zuid">Zuid</option>
+                    <option value="Zuidoost">Zuidoost</option>
+                    <option value="Oost">Oost</option>
+                </select>
+            </div>
+        </section>
+
+        <!-- Events Grid -->
+        <section id="events-grid" class="events-grid" aria-live="polite">
+            <!-- Event tegels worden hier door JavaScript ingevoegd -->
+        </section>
+    </main>
+
+    <!-- Modal for Event Details -->
+    <div id="modal" class="modal" role="dialog" aria-modal="true" aria-hidden="true">
+        <div class="modal-content">
+            <button class="modal-close" aria-label="Sluit venster">&times;</button>
+            <div id="modal-body" class="modal-body">
+                <!-- Modal content wordt hier door JavaScript ingevoegd -->
+            </div>
+        </div>
+    </div>
+
+    <footer class="main-footer">
+        <div class="container">
+            <p>&copy; 2025 Buitenbios Amsterdam. Alle rechten voorbehouden.</p>
+            <p class="disclaimer">Deze site is een onafhankelijke gids. Controleer altijd de officiële websites voor de meest actuele informatie en eventuele wijzigingen.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="events.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
