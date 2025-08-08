@@ -22,6 +22,7 @@ const filmDatabase = {
     "A Vida Luminosa": { year: 2025, lang: "Portugees", country: "Portugal", duration: 106, genres: ["Drama"] },
     "About a Boy": { year: 2002, lang: "Engels", country: "VK", duration: 101, genres: ["Komedie", "Drama", "Romantiek"] },
     "Amélie": { year: 2001, lang: "Frans", country: "Frankrijk", duration: 122, genres: ["Komedie", "Romantiek"] },
+    "Amsterdam": { year: 2022, lang: "Engels", country: "VS", duration: 134, genres: ["Komedie", "Drama", "Historie"] },
     "Anora": { year: 2024, lang: "Engels, Russisch", country: "VS", duration: 139, genres: ["Komedie", "Drama", "Romantiek"] },
     "Billy Elliot": { year: 2000, lang: "Engels", country: "VK", duration: 110, genres: ["Drama", "Muziek"] },
     "Bitter Gold": { year: 2024, lang: "Spaans", country: "Duitsland, Uruguay, Chili", duration: 83, genres: ["Neowestern", "Thriller", "Drama"] },
@@ -35,6 +36,7 @@ const filmDatabase = {
     "Do the Right Thing": { year: 1989, lang: "Engels", country: "VS", duration: 120, genres: ["Komedie", "Drama"] },
     "Ex Machina": { year: 2014, lang: "Engels", country: "VK", duration: 108, genres: ["Sci-Fi", "Drama", "Thriller"] },
     "Fantastic Mr. Fox": { year: 2009, lang: "Engels", country: "VS", duration: 87, genres: ["Animatie", "Avontuur", "Komedie"] },
+    "Fatma": { year: 1960, lang: "Turks", country: "Turkije", duration: 105, genres: ["Drama", "Romantiek"]},
     "Flow": { year: 2024, lang: "Geen dialoog", country: "Letland, Frankrijk, België", duration: 84, genres: ["Animatie", "Avontuur", "Familie"] },
     "Forrest Gump": { year: 1994, lang: "Engels", country: "VS", duration: 142, genres: ["Drama", "Romantiek"] },
     "Fwends": { year: 2025, lang: "Engels, Frans", country: "Australië", duration: 92, genres: ["Komedie"] },
@@ -42,7 +44,7 @@ const filmDatabase = {
     "Gloria!": { year: 2024, lang: "Italiaans", country: "Italië", duration: 100, genres: ["Historie", "Muziek"] },
     "Grease": { year: 1978, lang: "Engels", country: "VS", duration: 110, genres: ["Musical", "Romantiek"] },
     "Green Book": { year: 2018, lang: "Engels", country: "VS", duration: 130, genres: ["Biografie", "Komedie", "Drama"] },
-    "Hababam Sinifi": { year: 1975, lang: "Turks", country: "Turkije", duration: 87, genres: ["Komedie", "Drama"] },
+    "Hababam Sınıfı": { year: 1975, lang: "Turks", country: "Turkije", duration: 87, genres: ["Komedie", "Drama"] },
     "Her": { year: 2013, lang: "Engels", country: "VS", duration: 126, genres: ["Drama", "Romantiek", "Sci-Fi"] },
     "In the Heights": { year: 2021, lang: "Engels", country: "VS", duration: 143, genres: ["Drama", "Musical", "Romantiek"] },
     "Interstellar": { year: 2014, lang: "Engels", country: "VS", duration: 169, genres: ["Avontuur", "Drama", "Sci-Fi"] },
@@ -73,15 +75,17 @@ const filmDatabase = {
     "The Adventures of Baron Munchausen": { year: 1988, lang: "Engels", country: "VK", duration: 126, genres: ["Avontuur", "Komedie", "Fantasy"] },
     "The Baltimorons": { year: 2025, lang: "Engels", country: "VS", duration: 99, genres: ["Romantische komedie"] },
     "The Devil Wears Prada": { year: 2006, lang: "Engels", country: "VS", duration: 109, genres: ["Komedie", "Drama"] },
+    "The Fish Fall in Love": { year: 2006, lang: "Perzisch", country: "Iran", duration: 95, genres: ["Drama", "Romantiek"]},
     "The Grand Budapest Hotel": { year: 2014, lang: "Engels", country: "VS", duration: 99, genres: ["Avontuur", "Komedie", "Drama"] },
     "The Life Aquatic with Steve Zissou": { year: 2004, lang: "Engels", country: "VS", duration: 119, genres: ["Avontuur", "Komedie", "Drama"] },
     "The Proposal": { year: 2009, lang: "Engels", country: "VS", duration: 108, genres: ["Komedie", "Drama", "Romantiek"] },
-    "The Salt Path": { year: 2024, lang: "Engels", country: "VK", duration: 110, genres: ["Drama", "Biografie"] },
+    "The Salt Path": { year: 2024, lang: "Engels", country: "VK", duration: 112, genres: ["Drama"]},
     "The Secret Life of Walter Mitty": { year: 2013, lang: "Engels", country: "VS", duration: 114, genres: ["Avontuur", "Komedie", "Drama"] },
     "The Terminal": { year: 2004, lang: "Engels", country: "VS", duration: 128, genres: ["Komedie", "Drama", "Romantiek"] },
     "The Terminator": { year: 1984, lang: "Engels", country: "VS", duration: 107, genres: ["Actie", "Sci-Fi"] },
     "Thelma & Louise": { year: 1991, lang: "Engels", country: "VS", duration: 130, genres: ["Avontuur", "Misdaad", "Drama"] },
-    "Time of the Gypsies": { year: 1988, lang: "Servo-Kroatisch, Romani, Italiaans", country: "Joegoslavië", duration: 142, genres: ["Misdaad", "Drama", "Fantasy"] },
+    "There Will Be Blood": { year: 2007, lang: "Engels", country: "VS", duration: 158, genres: ["Drama"]},
+    "Time of the Gypsies": { year: 1988, lang: "Servokroatisch", country: "Joegoslavië", duration: 142, genres: ["Komedie", "Misdaad", "Drama"]},
     "Top Gun: Maverick": { year: 2022, lang: "Engels", country: "VS", duration: 130, genres: ["Actie", "Drama"] },
     "Up": { year: 2009, lang: "Engels", country: "VS", duration: 96, genres: ["Animatie", "Avontuur", "Komedie"] },
     "Vicky Cristina Barcelona": { year: 2008, lang: "Engels", country: "VS", duration: 96, genres: ["Komedie", "Drama", "Romantiek"] },
@@ -160,21 +164,21 @@ const events = [
             { "date": "20 aug (13:00)", "title": "Randprogramma: Intocht Sail", "description": "Vanwege Sail gaan we vandaag eerder open, en je kunt ’s middags al een strandstoel huren om van de bootjes te genieten." },
             { "date": "20 aug (21:30)", "title": "Short: Candy Bar", "description": "In de bioscoop krijgt een man van een meisje te horen dat hij op haar vader lijkt." },
             { "date": "20 aug (21:30)", "title": "A Bright Future", "imdb": "tt27989338", "description": "Een dystopische wereld waar wel cassettebandjes zijn, maar geen dieren meer." },
-            { "date": "21 aug (21:30)", "title": "What Does That Nature Say to You?", "imdb": "tt32039328", "description": "Een dolende dichter, een huis met kippen, en een ontmoeting met de schoonfamilie." },
+            { "date": "21 aug", "title": "What Does That Nature Say to You?", "imdb": "tt32039328", "description": "Een dolende dichter, een huis met kippen, en een ontmoeting met de schoonfamilie." },
             { "date": "22 aug (19:15)", "title": "Binnenfilm: Life of Pi", "imdb": "tt0454876", "description": "Een jongen, een tijger, een reddingsboot – en een verhaal dat je kijk op waarheid voorgoed verandert." },
-            { "date": "22 aug (21:30)", "title": "100 Litres of Gold", "imdb": "tt31355431", "description": "Twee zussen moeten met een kater en tegen de klok nieuwe liters bier brouwen om een familiedrama te voorkomen." },
+            { "date": "22 aug", "title": "100 Litres of Gold", "imdb": "tt31355431", "description": "Twee zussen moeten met een kater en tegen de klok nieuwe liters bier brouwen om een familiedrama te voorkomen." },
             { "date": "23 aug (19:15)", "title": "Binnenfilm: The Life Aquatic with Steve Zissou", "imdb": "tt0362270", "description": "Een zeldzame haai, een verloren vriend en een mislukte oceaanheld op wraaktocht." },
-            { "date": "23 aug (21:30)", "title": "Brother Verses Brother", "imdb": "tt27534531", "description": "Twee broers zoeken hun 99-jarige vader in San Francisco – zingend, ruziënd en improviserend." },
+            { "date": "23 aug", "title": "Brother Verses Brother", "imdb": "tt27534531", "description": "Twee broers zoeken hun 99-jarige vader in San Francisco – zingend, ruziënd en improviserend." },
             { "date": "24 aug (14:00)", "title": "Pluk MINI (kindereditie)", "description": "Een paradijs voor kleine avonturiers met Popeye op het grote doek, bootjes bouwen en de legendarische Pluk MINI disco." },
-            { "date": "24 aug (21:30)", "title": "Kontinental ’25", "imdb": "tt31840813", "description": "Een gerechtsdeurwaarder worstelt met haar schuldgevoel in een messcherpe satire over het kapitalisme." },
-            { "date": "25 aug (21:30)", "title": "Bitter Gold", "imdb": "tt29524741", "description": "Een spannende Chileense western over overleven, loyaliteit en de prijs van hebzucht." },
-            { "date": "26 aug (21:30)", "title": "A Vida Luminosa", "imdb": "tt31835331", "description": "Een warme, lichte film over de mooie chaos van jong-volwassen zijn in Lissabon." },
-            { "date": "27 aug (21:30)", "title": "Thank You for Banking with Us", "imdb": "tt28424264", "description": "Twee zussen proberen met een list hun erfenis veilig te stellen in een schrijnend én geestig kat-en-muisspel." },
-            { "date": "28 aug (21:30)", "title": "Shorts Night!", "description": "Een avondvullend programma met korte films over het menselijk lichaam en alles wat daarbij komt kijken." },
+            { "date": "24 aug", "title": "Kontinental ’25", "imdb": "tt31840813", "description": "Een gerechtsdeurwaarder worstelt met haar schuldgevoel in een messcherpe satire over het kapitalisme." },
+            { "date": "25 aug", "title": "Bitter Gold", "imdb": "tt29524741", "description": "Een spannende Chileense western over overleven, loyaliteit en de prijs van hebzucht." },
+            { "date": "26 aug", "title": "A Vida Luminosa", "imdb": "tt31835331", "description": "Een warme, lichte film over de mooie chaos van jong-volwassen zijn in Lissabon." },
+            { "date": "27 aug", "title": "Thank You for Banking with Us", "imdb": "tt28424264", "description": "Twee zussen proberen met een list hun erfenis veilig te stellen in een schrijnend én geestig kat-en-muisspel." },
+            { "date": "28 aug", "title": "Shorts Night!", "description": "Een avondvullend programma met korte films over het menselijk lichaam en alles wat daarbij komt kijken." },
             { "date": "29 aug (19:15)", "title": "Binnenfilm: Billy Elliot", "imdb": "tt0249462", "description": "Een hartverwarmend coming-of-ageverhaal over dromen, moed en het doorbreken van verwachtingen." },
-            { "date": "29 aug (21:30)", "title": "The Baltimorons", "imdb": "tt31128189", "description": "Een ex-standupper en een noodtandarts vinden elkaar tijdens een lange Kerstavond in Baltimore." },
+            { "date": "29 aug", "title": "The Baltimorons", "imdb": "tt31128189", "description": "Een ex-standupper en een noodtandarts vinden elkaar tijdens een lange Kerstavond in Baltimore." },
             { "date": "30 aug (19:15)", "title": "Binnenfilm: Little Miss Sunshine", "imdb": "tt0449059", "description": "Een chaotische roadtrip van een gestoorde familie verandert in een hartverwarmend verhaal." },
-            { "date": "30 aug (21:30)", "title": "Fwends", "imdb": "tt32319086", "description": "Twee GenZ-vriendinnen van vroeger zien elkaar weer terug in Melbourne, met totaal geïmproviseerde gesprekken." }
+            { "date": "30 aug", "title": "Fwends", "imdb": "tt32319086", "description": "Twee GenZ-vriendinnen van vroeger zien elkaar weer terug in Melbourne, met totaal geïmproviseerde gesprekken." }
         ],
         "extras": ["Terrein is gratis toegankelijk, je betaalt voor een strandstoel.", "Na de film is er 'De Stille Nachtclub' om te dansen."]
     },
@@ -194,10 +198,11 @@ const events = [
         "description": "Een gratis, vijfdaags evenement aan de oevers van de Sloterplas. Meer dan alleen film; een viering van de buurt met muziek, kunst, workshops en gezamenlijke maaltijden. Het thema voor 2025 is 'HABITAT'.",
         "website": "https://westbeachfilmfestival.com/",
         "ticketLink": null,
-        "imageUrl": "https://image.parool.nl/221621106/width/1280/west-beach-film-festival-in-nieuw-west",
+        "imageUrl": "https://storage.pubble.nl/648e3015/content/2022/6/183dbfe6-97fa-4cff-8169-ff4e358cf8d6_thumb1920.jpg",
         "imageGallery": [
             "https://app.thefeedfactory.nl/api/assets/6878c7f77c674714bad23b56/west_beach_film_festival.jpg",
-            "https://app.thefeedfactory.nl/api/assets/65aa91c28a54014acca58517/Ontwerp_zonder_titel.jpg"
+            "https://app.thefeedfactory.nl/api/assets/65aa91c28a54014acca58517/Ontwerp_zonder_titel.jpg",
+            "https://image.parool.nl/221621106/width/1280/west-beach-film-festival-in-nieuw-west"
         ],
         "program": [
             { "date": "17 sep", "title": "Anora", "imdb": "tt29298482" },
@@ -224,14 +229,15 @@ const events = [
         "description": "Een magische filmervaring in het Amsterdamse Bostheater. Het festival combineert filmvertoningen onder de sterrenhemel met muziek, poëzie en inleidingen van experts voor een diepere beleving.",
         "website": "https://bostheater.nl/ons-programma/cinetree/",
         "ticketLink": "https://bostheater.nl/ons-programma/cinetree/",
-        "imageUrl": "https://media.iamsterdam.com/w_907,h_514/4644yllu7ljt-cinetree-forest-film-festival1.webp",
+        "imageUrl": "https://media.iamsterdam.com/w_907,h_514/1xdpg3tii444-cinetree-forest-film-festival.webp",
         "imageGallery": [
-            "https://media.iamsterdam.com/w_907,h_514/1xdpg3tii444-cinetree-forest-film-festival.webp",
-            "https://media.iamsterdam.com/w_907,h_514/4tbr3ce4udax-cinetree-forest-film-festival.webp"
+            "https://media.iamsterdam.com/w_907,h_514/4644yllu7ljt-cinetree-forest-film-festival1.webp",
+            "https://media.iamsterdam.com/w_907,h_514/4tbr3ce4udax-cinetree-forest-film-festival.webp",
+            "https://image.parool.nl/206989192/width/2480/dit-weekend-vindt-het-forest-film-festival-plaats"
         ],
         "program": [
             { "date": "14 aug", "title": "The Salt Path", "imdb": "tt13632948" },
-            { "date": "15 aug", "title": "Do The Right Thing", "imdb": "tt0097216" },
+            { "date": "15 aug", "title": "Do the Right Thing", "imdb": "tt0097216" },
             { "date": "16 aug", "title": "Lion", "imdb": "tt3741834" },
             { "date": "17 aug", "title": "Flow", "imdb": "tt22513420" }
         ],
@@ -254,7 +260,11 @@ const events = [
         "website": "https://pllek.nl/films-with-a-view/",
         "ticketLink": "https://pllek.nl/agenda/",
         "imageUrl": "https://media.iamsterdam.com/w_907,h_514/71760w5du15s-pllek-8.webp",
-        "imageGallery": [],
+        "imageGallery": [
+            "https://outdoorcinema.nl/wp-content/uploads/2024/04/LOOK-OUT-3-9-van-95-e1689325680338-2-e1713877945687.jpg",
+            "https://image.volkskrant.nl/109924345/feature-crop/1200/1200/lekker-chillen-en-genieten-van-een-filmpje-bij-pllek",
+            "https://www.bartsboekje.com/wp-content/smush-webp/2024/07/Scherm%C2%ADafbeelding-2024-07-04-om-18.30.28-600x332.png.webp"
+        ],
         "program": [
             { "date": "5 aug", "title": "The Adventures of Baron Munchausen", "imdb": "tt0096764" },
             { "date": "12 aug", "title": "La Chimera", "imdb": "tt14561712" },
@@ -281,6 +291,8 @@ const events = [
         "ticketLink": null,
         "imageUrl": "https://app.thefeedfactory.nl/api/assets/665d8a955fbf84055a63e343/Bijlmerbios_2-__Hans_Mooren-Uitkrant.webp",
         "imageGallery": [
+            "https://www.amsterdamsfondsvoordekunst.nl/site/assets/files/11155/bijlmerbios.1280x0.jpg",
+            "https://bijlmerbios.com/wp-content/uploads/2019/07/Bijlmerbios-2017-4-%C2%A9-Bas-Bakkenes.jpg",
             "https://image.parool.nl/220825337/width/1280/de-bijlmerbios-in-zuidoost"
         ],
         "program": [
@@ -306,8 +318,12 @@ const events = [
         "description": "Het vernieuwde dakterras van NEMO, ontworpen als een Italiaanse 'piazza', vormt het decor voor een speciaal filmweekend. Drie avonden lang worden hier Italiaanse filmklassiekers vertoond, met een spectaculair uitzicht over de stad.",
         "website": "https://www.nemosciencemuseum.nl/",
         "ticketLink": "https://www.nemosciencemuseum.nl/",
-         "imageUrl": "https://image.parool.nl/234690342/width/1280/films-op-het-dak-bij-nemo-in-centrum",
-        "imageGallery": [],
+         "imageUrl": "https://cdn.sanity.io/images/49fr30wg/production/202a13df90aea98eeb3af744e79b2bf2227c6c2c-5657x3771.jpg?rect=0,295,5657,3182&w=1920&h=1080&fit=crop&auto=format",
+        "imageGallery": [
+            "https://image.parool.nl/234690342/width/1280/films-op-het-dak-bij-nemo-in-centrum",
+            "https://www.amsterdamsdagblad.nl/image/55574_107098_1200_1200.webp",
+            "https://verkeersbureaus.info/wp-content/uploads/2019/08/nemo-zomerdak-filmavond-2-foto-digidaan.jpg"
+        ],
         "program": [
             { "date": "28 aug", "title": "La vita è bella", "imdb": "tt0118799" },
             { "date": "29 aug", "title": "Caro Diario", "imdb": "tt0109382" },
@@ -360,8 +376,7 @@ const events = [
         "imageUrl": "https://media.iamsterdam.com/w_907,h_514/6ed3afnxw1c5-untitled-design-3.webp",
         "imageGallery": [
             "https://cdn.prod.website-files.com/6572d6e8f828190dadefbcac/657322ac54a49db42228f80b_rooftop-movie-nights.webp",
-            "https://hotelarena.nl/wp-content/uploads/Rooftop-Movie-Nights-Hotel-Arena-99-1200x1800.jpg",
-            "https://scontent.fein1-1.fna.fbcdn.net/v/t39.30808-6/479915621_959796712920323_8797089865153796273_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=127cfc&_nc_ohc=Cp0PwGmLxrkQ7kNvwGnw-8l&_nc_oc=AdlAshI_6ZXSIpjd6aFXgFJQ38DeKCycPeDhPBW_INRwV2gKXJ_Syo5ZRXnUwWK9YTk&_nc_zt=23&_nc_ht=scontent.fein1-1.fna&_nc_gid=H5bMkswYNupP9BoXQN4uDA&oh=00_AfX69j-Z1ATMBn4_MDftCaYr64LMe2qrKD97O7jBWtz1fw&oe=68980183"
+            "https://hotelarena.nl/wp-content/uploads/Rooftop-Movie-Nights-Hotel-Arena-99-1200x1800.jpg"
         ],
         "program": [
             { "date": "5 aug", "title": "A Man Called Otto", "imdb": "tt7405458" },
@@ -400,9 +415,10 @@ const events = [
         "description": "Films op een unieke daklocatie met comfortabele zitplaatsen en een prachtig uitzicht over de stad. Het programma omvat publieksfavorieten zoals romantische komedies, Disney, actie en sciencefiction.",
         "website": "https://cityscapecinema.com/",
         "ticketLink": "https://shop.ticketapp.com/hggzc",
-        "imageUrl": "https://cdn.prod.website-files.com/6572d6e9f828190dadefbd3b/684aaf58dbbd3dc2a49154b4_leonardo-hotel-rembrandtpark-floor17-movie-night.jpg",
+        "imageUrl": "https://scontent.fein1-1.fna.fbcdn.net/v/t1.6435-9/119844250_2704961783048814_8035016743385143717_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=833d8c&_nc_ohc=zwMhh8yNBCgQ7kNvwFIlZ50&_nc_oc=AdlCcmTNhOCSJp8zOnn8vEAHhofiLuCaKid2ypErDGcg6yE-3FKgMB-E8nKVnCZk3lI&_nc_zt=23&_nc_ht=scontent.fein1-1.fna&_nc_gid=QC1QIqojeaZHtlZYtf0UoQ&oh=00_AfW1PGdAC93nM7GlDbgbccFQNOa3zg3-QU0amPFYbDmfXg&oe=68BD60E0",
         "imageGallery": [
-            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRiY6BhYyi1Br9WWb6ZPaEcavB5jcZYUB6FRQ&s"
+            "https://vanduijnenhoreca.nl/wp-content/uploads/sites/2/2021/11/Floor17-rooftop-Amsterdam-e1714130528370.jpg",
+            "https://www.yourlittleblackbook.me/wp-content/uploads/2017/08/openlucht-bioscopen-amsterdam-rooftop.jpg"
         ],
         "program": [
             { "date": "18 aug", "title": "Grease", "imdb": "tt0077631" },
@@ -414,10 +430,122 @@ const events = [
             { "date": "24 aug", "title": "Bridget Jones's Diary", "imdb": "tt0243155" }
         ],
         "extras": ["Ticketprijs is €17.50 excl. €1.00 service fee."]
+    },
+    {
+        "id": "sunsets-eye",
+        "title": "Sunsets at EYE",
+        "period": "Zomer 2025",
+        "month": ["june", "july", "august"],
+        "price": "free",
+        "ticketPrice": "Gratis",
+        "district": "Noord",
+        "startTime": "22:00",
+        "languageDetails": { "spoken": "Divers", "subtitles": "Engels" },
+        "location": "Park naast het EYE Filmmuseum, IJpromenade 1, Amsterdam",
+        "coords": { "latitude": 52.3847, "longitude": 4.9016 },
+        "gmaps": "https://www.google.com/maps/search/?api=1&query=EYE+Filmmuseum+Amsterdam",
+        "description": "Geniet van filmklassiekers en nieuwe ontdekkingen op een groot scherm in het park naast het iconische EYE Filmmuseum, met uitzicht op het IJ. Een perfecte zomeravond met vrienden.",
+        "website": "https://www.eyefilm.nl/sunsets",
+        "ticketLink": null,
+        "imageUrl": "https://app.thefeedfactory.nl/api/assets/668fa028309aba0f1761b5d5/Sunsets_2023_credits_Jordi_Wallenburg__34_.jpg",
+        "imageGallery": [
+            "https://assets.eyefilm.nl/images/programme-item/_1200x630_crop_center-center_none/campagnebeeld-Sunsets-horizontaal.jpg",
+            "https://likealocalguide.com/_next/image?url=https%3A%2F%2Fdirectus.likealocalguide.com%2Fassets%2F47798106-328c-4818-8a0f-b71049814125&w=3840&q=75",
+            "https://www.bartsboekje.com/wp-content/smush-webp/2024/07/Scherm%C2%ADafbeelding-2024-07-04-om-17.56.42-600x420.png.webp"
+        ],
+        "program": [
+            { "date": "Nog niet bekend", "title": "Programma wordt later aangekondigd", "imdb": null }
+        ],
+        "extras": ["Gratis toegang, neem je eigen kleedje mee."]
+    },
+    {
+        "id": "moons-of-cavia",
+        "title": "Moons of Cavia @ Filmhuis Cavia",
+        "period": "28 - 31 augustus 2025",
+        "month": ["august"],
+        "price": "free",
+        "ticketPrice": "Donatie (Cineville geldig)",
+        "district": "West",
+        "startTime": "20:00 (deuren open)",
+        "languageDetails": { "spoken": "Divers", "subtitles": "Engels" },
+        "location": "Tuin Filmhuis Cavia, Van Hallstraat 52, Amsterdam",
+        "coords": { "latitude": 52.3781, "longitude": 4.8681 },
+        "gmaps": "https://www.google.com/maps/search/?api=1&query=Van+Hallstraat+52+Amsterdam",
+        "description": "Het kleinste filmhuis van Amsterdam gaat naar buiten! In de intieme tuin van Filmhuis Cavia geniet je van een eigenzinnig en verrassend programma onder de sterrenhemel. Een unieke, lokale filmervaring.",
+        "website": "https://filmhuiscavia.nl/",
+        "ticketLink": "https://filmhuiscavia.nl/programma/",
+        "imageUrl": "https://www.filmhuiscavia.nl/application/files/2216/9020/8392/moons-2023-kaboom.jpg",
+        "imageGallery": [
+            "https://filmhuiscavia.nl/application/files/3916/9020/8393/moons-2023-zienema2.jpg",
+            "https://filmhuiscavia.nl/application/files/2917/5371/1843/Moons-Poster-2025.png",
+            "https://www.filmhuiscavia.nl/application/files/6816/2489/1421/binnentuin-kasparhauser_.jpg"
+        ],
+        "program": [
+            { "date": "28-31 aug", "title": "Programma via de website", "imdb": null }
+        ],
+        "extras": ["Toegang op donatiebasis.", "Cinevillepas is geldig."]
+    },
+    {
+        "id": "panorama-nights-lab111",
+        "title": "Panorama Movie Nights @ Oedipus Craft Space",
+        "period": "Woensdagen in juli & aug",
+        "month": ["july", "august"],
+        "price": "paid",
+        "ticketPrice": "€8 (incl. biertje)",
+        "district": "Noord",
+        "startTime": "21:00",
+        "languageDetails": { "spoken": "Engels", "subtitles": "Nederlands" },
+        "location": "Oedipus Craft Space, Schaafstraat 21, Amsterdam",
+        "coords": { "latitude": 52.3916, "longitude": 4.9221 },
+        "gmaps": "https://www.google.com/maps/search/?api=1&query=Oedipus+Craft+Space+Schaafstraat+21+Amsterdam",
+        "description": "LAB111 en Oedipus Brewing slaan de handen ineen voor Panorama Nights. Geniet van een gecureerde selectie films in de relaxte sfeer van de Oedipus Craft Space, inclusief een speciaal Panorama biertje.",
+        "website": "https://www.lab111.nl/lab111-oedipus-brewing-present-panorama-movie-nights/",
+        "ticketLink": "https://shop.lab111.nl/",
+        "imageUrl": "https://oedipus.com/cdn/shop/files/IMG_8232.jpg?v=1752157019&width=750",
+        "imageGallery": [
+            "https://www.lab111.nl/wp-content/uploads/2025/07/image001.png",
+            "https://www.yourlittleblackbook.me/wp-content/uploads/2024/10/Oedipus-Craft-Space-Amsterdam-3-marinachef-.jpg"
+        ],
+        "program": [
+            { "date": "10 jul", "title": "Do the Right Thing", "imdb": "tt0097216" },
+            { "date": "17 jul", "title": "Ghost In The Shell", "imdb": "tt0113568" },
+            { "date": "24 jul", "title": "The Terminator", "imdb": "tt0088247" },
+            { "date": "31 jul", "title": "Her", "imdb": "tt1798709" },
+            { "date": "7 aug", "title": "Ex Machina", "imdb": "tt0470752" },
+            { "date": "14 aug", "title": "When Harry Met Sally...", "imdb": "tt0098635" }
+        ],
+        "extras": ["Ticket is inclusief een Oedipus Panorama biertje.", "Samenwerking tussen LAB111 en Oedipus Brewing."]
+    },
+    {
+        "id": "cinema-amstelveen-tour",
+        "title": "Cinema Amstelveen on Tour",
+        "period": "5, 6, 12 & 13 september",
+        "month": ["september"],
+        "price": "free",
+        "ticketPrice": "Gratis (verwacht)",
+        "district": "Zuid",
+        "startTime": "20:30",
+        "languageDetails": { "spoken": "Nederlands/Engels", "subtitles": "Nederlands" },
+        "location": "Diverse locaties in Amstelveen",
+        "coords": { "latitude": 52.3023, "longitude": 4.8453 },
+        "gmaps": "https://www.google.com/maps/search/?api=1&query=Schouwburg+Amstelveen",
+        "description": "Cinema Amstelveen trekt eropuit! Geniet van gratis filmvertoningen op verschillende pleinen in Amstelveen, zoals het Stadsplein en het plein bij Theater De Landing. Een gezellig filmevenement voor de hele buurt.",
+        "website": "https://schouwburgamstelveen.nl/nl/pinfo/2324090/cinema-on-tour",
+        "ticketLink": null,
+        "imageUrl": "https://www.mijnamstelveen.nl/current/local/runtime/images/17410/1120x630/IMG_1462.jpeg",
+        "imageGallery": [
+            "https://schouwburgamstelveen.nl/media/dx5nff2v/photo-2023-06-30-22-21-58.jpg?anchor=center&mode=crop&width=1436&height=802&rnd=133346681547670000",
+            "https://schouwburgamstelveen.nl/media/4c2oqzya/photo-2023-06-30-22-21-55.jpg"
+        ],
+        "program": [
+            { "date": "5 & 6 sep", "title": "Programma volgt (Stadsplein)" },
+            { "date": "12 & 13 sep", "title": "Programma volgt (De Landing)" }
+        ],
+        "extras": ["Gratis toegang.", "Locaties: Stadsplein (5 & 6 sep) en plein bij Theater De Landing (12 & 13 sep)."]
     }
 ];
 
-        // Logic from script.js
+        // --- LOGIC: script.js ---
         document.addEventListener('DOMContentLoaded', () => {
             // DOM Elements
             const eventsGrid = document.getElementById('events-grid');
@@ -434,7 +562,7 @@ const events = [
             const footerLinks = document.getElementById('footer-links');
             let map; // Variable to hold the map instance
 
-            // Inline SVG assets
+            // Inline SVG assets for icons, making the site self-contained
             const locationIconSvg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="info-icon"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>`;
             const districtIconSvg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="info-icon"><path d="M12 12.5a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5zM12 2a8 8 0 0 0-8 8c0 1.42.39 2.75 1.09 3.91L12 22l6.91-8.09A7.94 7.94 0 0 0 20 10a8 8 0 0 0-8-8zm0 10a2 2 0 1 1 0-4 2 2 0 0 1 0 4z"/></svg>`;
             const calendarIconSvg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="info-icon"><path d="M17 12h-5v5h5v-5zM16 1v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2h-1V1h-2zm3 18H5V8h14v11z"/></svg>`;
@@ -442,6 +570,7 @@ const events = [
             const imdbIconSvg = `<img src="https://upload.wikimedia.org/wikipedia/commons/6/69/IMDB_Logo_2016.svg" alt="IMDb logo" style="height: 20px; vertical-align: middle;">`;
 
             // --- DATA ENRICHMENT ---
+            // Add detailed film info to each program item for easier access
             const enrichEventData = () => {
                 events.forEach(event => {
                     event.program.forEach(film => {
@@ -469,7 +598,8 @@ const events = [
                     tile.setAttribute('tabindex', '0');
                     tile.setAttribute('aria-label', `Bekijk details voor ${event.title}`);
 
-                    const districtClass = `district-${event.district.toLowerCase().replace('-', '')}`;
+                    // Create a clean class name for the district, e.g., "Nieuw-West" -> "nieuwwest"
+                    const districtClass = `district-${event.district.toLowerCase().replace(/[^a-z0-9]/g, '')}`;
 
                     tile.innerHTML = `
                         <img src="${event.imageUrl}" alt="${event.title}" class="tile-bg" loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/600x400/cccccc/ffffff?text=Beeld+niet+beschikbaar';">
@@ -504,8 +634,10 @@ const events = [
                 modalBody.innerHTML = `
                     <img src="${event.imageUrl}" alt="${event.title}" class="modal-gallery-header" loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/800x250/cccccc/ffffff?text=Beeld+niet+beschikbaar';">
                     <div class="modal-header">
-                        <h2>${event.title}</h2>
-                        ${event.ticketLink ? `<a href="${event.ticketLink}" target="_blank" rel="noopener noreferrer" class="modal-ticket-btn">Tickets</a>` : ''}
+                        <div class="modal-header-top">
+                            <h2>${event.title}</h2>
+                            ${event.ticketLink ? `<a href="${event.ticketLink}" target="_blank" rel="noopener noreferrer" class="modal-ticket-btn">Tickets</a>` : ''}
+                        </div>
                         <div class="modal-info-bar">
                              <div class="modal-info-item">
                                 <a href="${event.gmaps}" target="_blank" rel="noopener noreferrer">
@@ -543,15 +675,13 @@ const events = [
                         <ul class="program-list">
                             ${event.program.map(p => `
                                 <li>
-                                    <div>
-                                        <div class="program-item-header">
-                                            <span class="program-date">${p.date}</span>
-                                            <span class="program-title">${p.title}</span>
-                                            ${p.imdb ? `<a href="https://www.imdb.com/title/${p.imdb}" target="_blank" rel="noopener noreferrer" class="imdb-link" aria-label="Bekijk ${p.title} op IMDb">${imdbIconSvg}</a>` : ''}
-                                        </div>
-                                        ${p.details ? `<div class="program-details">${p.details.year} &bull; ${p.details.genres.join(', ')} &bull; ${p.details.duration} min</div>` : ''}
-                                        ${p.description ? `<p class="program-description">${p.description}</p>` : ''}
+                                    <div class="program-item-header">
+                                        <span class="program-date">${p.date}</span>
+                                        <span class="program-title">${p.title}</span>
+                                        ${p.imdb ? `<a href="https://www.imdb.com/title/${p.imdb}" target="_blank" rel="noopener noreferrer" class="imdb-link" aria-label="Bekijk ${p.title} op IMDb">${imdbIconSvg}</a>` : ''}
                                     </div>
+                                    ${p.details ? `<div class="program-details">${p.details.year} &bull; ${p.details.genres.join(', ')} &bull; ${p.details.duration} min</div>` : ''}
+                                    ${p.description ? `<p class="program-description">${p.description}</p>` : ''}
                                 </li>
                             `).join('')}
                         </ul>
@@ -563,7 +693,7 @@ const events = [
                         
                         <div class="modal-links">
                             <a href="${event.website}" target="_blank" rel="noopener noreferrer">Officiële Website</a>
-                            <a href="${event.gmaps}" target="_blank" rel="noopener noreferrer" class="secondary">Routebeschrijving</a>
+                            <a href="${event.gmaps}" target="_blank" rel="noopener noreferrer">Routebeschrijving</a>
                         </div>
                     </div>
 
@@ -576,6 +706,7 @@ const events = [
                     </div>
                 `;
                 modal.style.display = 'block';
+                document.body.style.overflow = 'hidden'; // Prevent background scrolling
                 modal.setAttribute('aria-hidden', 'false');
                 closeModalBtn.focus();
                 
@@ -587,6 +718,7 @@ const events = [
                     });
                 });
                 
+                // Render map and fetch weather after a short delay to ensure modal is visible
                 setTimeout(() => {
                     renderMap(event.coords.latitude, event.coords.longitude, event.title);
                     fetchWeather(event.coords.latitude, event.coords.longitude);
@@ -599,11 +731,13 @@ const events = [
                     map = null;
                 }
                 modal.style.display = 'none';
+                document.body.style.overflow = 'auto'; // Restore background scrolling
                 modal.setAttribute('aria-hidden', 'true');
             };
 
-            // --- MAP RENDERING ---
+            // --- MAP RENDERING (using Leaflet.js) ---
             const renderMap = (lat, lon, title) => {
+                // Check if the map container exists
                 if (document.getElementById('map')) {
                     map = L.map('map').setView([lat, lon], 15);
                     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -619,7 +753,7 @@ const events = [
             // --- WEATHER WIDGET ---
             const fetchWeather = async (lat, lon) => {
                 const weatherWidget = document.getElementById('weather-widget');
-                const apiUrl = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&hourly=temperature_2m,weathercode&daily=weathercode&timezone=Europe/Amsterdam&forecast_days=5`;
+                const apiUrl = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&hourly=temperature_2m,weathercode&daily=weathercode,temperature_2m_max,temperature_2m_min&timezone=Europe/Amsterdam&forecast_days=5`;
 
                 try {
                     const response = await fetch(apiUrl);
@@ -632,6 +766,7 @@ const events = [
                         const dayName = date.toLocaleDateString('nl-NL', { weekday: 'short' });
                         const dayDate = date.toLocaleDateString('nl-NL', { day: 'numeric', month: 'short' });
                         
+                        // Find the temperature around 21:00 for the evening forecast
                         const hourIndex = data.hourly.time.findIndex(h => h.startsWith(time.split('T')[0] + 'T21:00'));
                         
                         const eveningTemp = hourIndex !== -1 ? Math.round(data.hourly.temperature_2m[hourIndex]) : '--';
@@ -683,17 +818,25 @@ const events = [
                 const dates = new Set();
                 events.forEach(event => {
                     event.program.forEach(film => {
+                        // Extract just the date part like "6 aug"
                         const dateMatch = film.date.match(/^(\d+\s\w+)/);
                         if(dateMatch) {
                             dates.add(dateMatch[1]);
                         }
                     });
                 });
+                
+                // Custom month order for sorting
+                const monthOrder = { 'jul': 7, 'aug': 8, 'sep': 9 };
 
                 const sortedDates = Array.from(dates).sort((a, b) => {
-                    const dateA = new Date(a.replace(/(\d+)\s(\w+)/, '$2 $1, 2025'));
-                    const dateB = new Date(b.replace(/(\d+)\s(\w+)/, '$2 $1, 2025'));
-                    return dateA - dateB;
+                    const [dayA, monthStrA] = a.split(' ');
+                    const [dayB, monthStrB] = b.split(' ');
+                    const monthA = monthOrder[monthStrA.slice(0,3).toLowerCase()];
+                    const monthB = monthOrder[monthStrB.slice(0,3).toLowerCase()];
+
+                    if (monthA !== monthB) return monthA - monthB;
+                    return parseInt(dayA) - parseInt(dayB);
                 });
 
                 sortedDates.forEach(date => {
@@ -712,6 +855,7 @@ const events = [
                 const filteredEvents = events.filter(event => {
                     const priceMatch = priceValue === 'all' || event.price === priceValue;
                     const districtMatch = districtValue === 'all' || event.district === districtValue;
+                    // Check if any film in the program starts with the selected date
                     const dateMatch = dateValue === 'all' || event.program.some(film => film.date.startsWith(dateValue));
                     
                     return dateMatch && priceMatch && districtMatch;
@@ -754,8 +898,20 @@ const events = [
                 faqContainer.querySelectorAll('.faq-question').forEach(button => {
                     button.addEventListener('click', () => {
                         const answer = button.nextElementSibling;
-                        button.classList.toggle('active');
-                        if (button.classList.contains('active')) {
+                        const isActive = button.classList.contains('active');
+                        
+                        // Close all other open FAQs
+                        faqContainer.querySelectorAll('.faq-question.active').forEach(activeButton => {
+                            if (activeButton !== button) {
+                                activeButton.classList.remove('active');
+                                activeButton.nextElementSibling.style.maxHeight = 0;
+                                activeButton.nextElementSibling.style.padding = "0 10px 0 10px";
+                            }
+                        });
+
+                        // Toggle the clicked FAQ
+                        button.classList.toggle('active', !isActive);
+                        if (!isActive) {
                             answer.style.maxHeight = answer.scrollHeight + "px";
                             answer.style.padding = "0 10px 20px 10px";
                         } else {
@@ -776,6 +932,8 @@ const events = [
                     link.addEventListener('click', (e) => {
                         e.preventDefault();
                         openModal(e.target.dataset.eventId);
+                        // Scroll to top to see the modal
+                        window.scrollTo({ top: 0, behavior: 'smooth' });
                     });
                 });
             };
@@ -783,11 +941,13 @@ const events = [
             // --- EVENT LISTENERS ---
             closeModalBtn.addEventListener('click', closeModal);
             modal.addEventListener('click', (e) => {
+                // Close modal if the outer background is clicked
                 if (e.target === modal) {
                     closeModal();
                 }
             });
             document.addEventListener('keydown', (e) => {
+                // Close modal with Escape key
                 if (e.key === 'Escape' && modal.style.display === 'block') {
                     closeModal();
                 }
@@ -797,18 +957,19 @@ const events = [
                 lightbox.style.display = 'none';
             });
             lightbox.addEventListener('click', (e) => {
+                // Close lightbox if the outer background is clicked
                 if(e.target === lightbox) {
                     lightbox.style.display = 'none';
                 }
             });
 
-
+            // Add listeners for filter changes
             dateFilter.addEventListener('change', applyFilters);
             priceFilter.addEventListener('change', applyFilters);
             districtFilter.addEventListener('change', applyFilters);
             resetBtn.addEventListener('click', resetFilters);
 
-            // Initial setup
+            // --- INITIALIZATION ---
             enrichEventData();
             populateDateFilter();
             renderEvents(events);

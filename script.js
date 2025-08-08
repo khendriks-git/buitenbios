@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const footerLinks = document.getElementById('footer-links');
     let map; // Variable to hold the map instance
 
-    // Inline SVG assets
+    // Inline SVG assets for icons, making the site self-contained
     const locationIconSvg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="info-icon"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>`;
     const districtIconSvg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="info-icon"><path d="M12 12.5a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5zM12 2a8 8 0 0 0-8 8c0 1.42.39 2.75 1.09 3.91L12 22l6.91-8.09A7.94 7.94 0 0 0 20 10a8 8 0 0 0-8-8zm0 10a2 2 0 1 1 0-4 2 2 0 0 1 0 4z"/></svg>`;
     const calendarIconSvg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="info-icon"><path d="M17 12h-5v5h5v-5zM16 1v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2h-1V1h-2zm3 18H5V8h14v11z"/></svg>`;
@@ -22,6 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const imdbIconSvg = `<img src="https://upload.wikimedia.org/wikipedia/commons/6/69/IMDB_Logo_2016.svg" alt="IMDb logo" style="height: 20px; vertical-align: middle;">`;
 
     // --- DATA ENRICHMENT ---
+    // Add detailed film info to each program item for easier access
     const enrichEventData = () => {
         events.forEach(event => {
             event.program.forEach(film => {
@@ -49,7 +50,8 @@ document.addEventListener('DOMContentLoaded', () => {
             tile.setAttribute('tabindex', '0');
             tile.setAttribute('aria-label', `Bekijk details voor ${event.title}`);
 
-            const districtClass = `district-${event.district.toLowerCase().replace('-', '')}`;
+            // Create a clean class name for the district, e.g., "Nieuw-West" -> "nieuwwest"
+            const districtClass = `district-${event.district.toLowerCase().replace(/[^a-z0-9]/g, '')}`;
 
             tile.innerHTML = `
                 <img src="${event.imageUrl}" alt="${event.title}" class="tile-bg" loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/600x400/cccccc/ffffff?text=Beeld+niet+beschikbaar';">
@@ -84,8 +86,10 @@ document.addEventListener('DOMContentLoaded', () => {
         modalBody.innerHTML = `
             <img src="${event.imageUrl}" alt="${event.title}" class="modal-gallery-header" loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/800x250/cccccc/ffffff?text=Beeld+niet+beschikbaar';">
             <div class="modal-header">
-                <h2>${event.title}</h2>
-                ${event.ticketLink ? `<a href="${event.ticketLink}" target="_blank" rel="noopener noreferrer" class="modal-ticket-btn">Tickets</a>` : ''}
+                <div class="modal-header-top">
+                    <h2>${event.title}</h2>
+                    ${event.ticketLink ? `<a href="${event.ticketLink}" target="_blank" rel="noopener noreferrer" class="modal-ticket-btn">Tickets</a>` : ''}
+                </div>
                 <div class="modal-info-bar">
                      <div class="modal-info-item">
                         <a href="${event.gmaps}" target="_blank" rel="noopener noreferrer">
@@ -123,15 +127,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 <ul class="program-list">
                     ${event.program.map(p => `
                         <li>
-                            <div>
-                                <div class="program-item-header">
-                                    <span class="program-date">${p.date}</span>
-                                    <span class="program-title">${p.title}</span>
-                                    ${p.imdb ? `<a href="https://www.imdb.com/title/${p.imdb}" target="_blank" rel="noopener noreferrer" class="imdb-link" aria-label="Bekijk ${p.title} op IMDb">${imdbIconSvg}</a>` : ''}
-                                </div>
-                                ${p.details ? `<div class="program-details">${p.details.year} &bull; ${p.details.genres.join(', ')} &bull; ${p.details.duration} min</div>` : ''}
-                                ${p.description ? `<p class="program-description">${p.description}</p>` : ''}
+                            <div class="program-item-header">
+                                <span class="program-date">${p.date}</span>
+                                <span class="program-title">${p.title}</span>
+                                ${p.imdb ? `<a href="https://www.imdb.com/title/${p.imdb}" target="_blank" rel="noopener noreferrer" class="imdb-link" aria-label="Bekijk ${p.title} op IMDb">${imdbIconSvg}</a>` : ''}
                             </div>
+                            ${p.details ? `<div class="program-details">${p.details.year} • ${p.details.genres.join(', ')} • ${p.details.duration} min</div>` : ''}
+                            ${p.description ? `<p class="program-description">${p.description}</p>` : ''}
                         </li>
                     `).join('')}
                 </ul>
@@ -143,7 +145,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 
                 <div class="modal-links">
                     <a href="${event.website}" target="_blank" rel="noopener noreferrer">Officiële Website</a>
-                    <a href="${event.gmaps}" target="_blank" rel="noopener noreferrer" class="secondary">Routebeschrijving</a>
+                    <a href="${event.gmaps}" target="_blank" rel="noopener noreferrer">Routebeschrijving</a>
                 </div>
             </div>
 
@@ -156,6 +158,7 @@ document.addEventListener('DOMContentLoaded', () => {
             </div>
         `;
         modal.style.display = 'block';
+        document.body.style.overflow = 'hidden'; // Prevent background scrolling
         modal.setAttribute('aria-hidden', 'false');
         closeModalBtn.focus();
         
@@ -167,6 +170,7 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
         
+        // Render map and fetch weather after a short delay to ensure modal is visible
         setTimeout(() => {
             renderMap(event.coords.latitude, event.coords.longitude, event.title);
             fetchWeather(event.coords.latitude, event.coords.longitude);
@@ -179,16 +183,18 @@ document.addEventListener('DOMContentLoaded', () => {
             map = null;
         }
         modal.style.display = 'none';
+        document.body.style.overflow = 'auto'; // Restore background scrolling
         modal.setAttribute('aria-hidden', 'true');
     };
 
-    // --- MAP RENDERING ---
+    // --- MAP RENDERING (using Leaflet.js) ---
     const renderMap = (lat, lon, title) => {
+        // Check if the map container exists
         if (document.getElementById('map')) {
             map = L.map('map').setView([lat, lon], 15);
             L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
                 maxZoom: 19,
-                attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+                attribution: '© <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
             }).addTo(map);
             L.marker([lat, lon]).addTo(map)
                 .bindPopup(`<b>${title}</b>`)
@@ -199,7 +205,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- WEATHER WIDGET ---
     const fetchWeather = async (lat, lon) => {
         const weatherWidget = document.getElementById('weather-widget');
-        const apiUrl = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&hourly=temperature_2m,weathercode&daily=weathercode&timezone=Europe/Amsterdam&forecast_days=5`;
+        const apiUrl = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&hourly=temperature_2m,weathercode&daily=weathercode,temperature_2m_max,temperature_2m_min&timezone=Europe/Amsterdam&forecast_days=5`;
 
         try {
             const response = await fetch(apiUrl);
@@ -212,6 +218,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const dayName = date.toLocaleDateString('nl-NL', { weekday: 'short' });
                 const dayDate = date.toLocaleDateString('nl-NL', { day: 'numeric', month: 'short' });
                 
+                // Find the temperature around 21:00 for the evening forecast
                 const hourIndex = data.hourly.time.findIndex(h => h.startsWith(time.split('T')[0] + 'T21:00'));
                 
                 const eveningTemp = hourIndex !== -1 ? Math.round(data.hourly.temperature_2m[hourIndex]) : '--';
@@ -263,17 +270,25 @@ document.addEventListener('DOMContentLoaded', () => {
         const dates = new Set();
         events.forEach(event => {
             event.program.forEach(film => {
+                // Extract just the date part like "6 aug"
                 const dateMatch = film.date.match(/^(\d+\s\w+)/);
                 if(dateMatch) {
                     dates.add(dateMatch[1]);
                 }
             });
         });
+        
+        // Custom month order for sorting
+        const monthOrder = { 'jul': 7, 'aug': 8, 'sep': 9 };
 
         const sortedDates = Array.from(dates).sort((a, b) => {
-            const dateA = new Date(a.replace(/(\d+)\s(\w+)/, '$2 $1, 2025'));
-            const dateB = new Date(b.replace(/(\d+)\s(\w+)/, '$2 $1, 2025'));
-            return dateA - dateB;
+            const [dayA, monthStrA] = a.split(' ');
+            const [dayB, monthStrB] = b.split(' ');
+            const monthA = monthOrder[monthStrA.slice(0,3).toLowerCase()];
+            const monthB = monthOrder[monthStrB.slice(0,3).toLowerCase()];
+
+            if (monthA !== monthB) return monthA - monthB;
+            return parseInt(dayA) - parseInt(dayB);
         });
 
         sortedDates.forEach(date => {
@@ -292,6 +307,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const filteredEvents = events.filter(event => {
             const priceMatch = priceValue === 'all' || event.price === priceValue;
             const districtMatch = districtValue === 'all' || event.district === districtValue;
+            // Check if any film in the program starts with the selected date
             const dateMatch = dateValue === 'all' || event.program.some(film => film.date.startsWith(dateValue));
             
             return dateMatch && priceMatch && districtMatch;
@@ -334,8 +350,20 @@ document.addEventListener('DOMContentLoaded', () => {
         faqContainer.querySelectorAll('.faq-question').forEach(button => {
             button.addEventListener('click', () => {
                 const answer = button.nextElementSibling;
-                button.classList.toggle('active');
-                if (button.classList.contains('active')) {
+                const isActive = button.classList.contains('active');
+                
+                // Close all other open FAQs
+                faqContainer.querySelectorAll('.faq-question.active').forEach(activeButton => {
+                    if (activeButton !== button) {
+                        activeButton.classList.remove('active');
+                        activeButton.nextElementSibling.style.maxHeight = 0;
+                        activeButton.nextElementSibling.style.padding = "0 10px 0 10px";
+                    }
+                });
+
+                // Toggle the clicked FAQ
+                button.classList.toggle('active', !isActive);
+                if (!isActive) {
                     answer.style.maxHeight = answer.scrollHeight + "px";
                     answer.style.padding = "0 10px 20px 10px";
                 } else {
@@ -356,6 +384,8 @@ document.addEventListener('DOMContentLoaded', () => {
             link.addEventListener('click', (e) => {
                 e.preventDefault();
                 openModal(e.target.dataset.eventId);
+                // Scroll to top to see the modal
+                window.scrollTo({ top: 0, behavior: 'smooth' });
             });
         });
     };
@@ -363,11 +393,13 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- EVENT LISTENERS ---
     closeModalBtn.addEventListener('click', closeModal);
     modal.addEventListener('click', (e) => {
+        // Close modal if the outer background is clicked
         if (e.target === modal) {
             closeModal();
         }
     });
     document.addEventListener('keydown', (e) => {
+        // Close modal with Escape key
         if (e.key === 'Escape' && modal.style.display === 'block') {
             closeModal();
         }
@@ -377,18 +409,19 @@ document.addEventListener('DOMContentLoaded', () => {
         lightbox.style.display = 'none';
     });
     lightbox.addEventListener('click', (e) => {
+        // Close lightbox if the outer background is clicked
         if(e.target === lightbox) {
             lightbox.style.display = 'none';
         }
     });
 
-
+    // Add listeners for filter changes
     dateFilter.addEventListener('change', applyFilters);
     priceFilter.addEventListener('change', applyFilters);
     districtFilter.addEventListener('change', applyFilters);
     resetBtn.addEventListener('click', resetFilters);
 
-    // Initial setup
+    // --- INITIALIZATION ---
     enrichEventData();
     populateDateFilter();
     renderEvents(events);
