@@ -22,7 +22,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const imdbIconSvg = `<img src="https://upload.wikimedia.org/wikipedia/commons/6/69/IMDB_Logo_2016.svg" alt="IMDb logo" style="height: 20px; vertical-align: middle;">`;
 
     // --- DATA ENRICHMENT ---
-    // Add detailed film info to each program item for easier access
     const enrichEventData = () => {
         events.forEach(event => {
             event.program.forEach(film => {
@@ -49,10 +48,7 @@ document.addEventListener('DOMContentLoaded', () => {
             tile.setAttribute('role', 'button');
             tile.setAttribute('tabindex', '0');
             tile.setAttribute('aria-label', `Bekijk details voor ${event.title}`);
-
-            // Create a clean class name for the district, e.g., "Nieuw-West" -> "nieuwwest"
             const districtClass = `district-${event.district.toLowerCase().replace(/[^a-z0-9]/g, '')}`;
-
             tile.innerHTML = `
                 <img src="${event.imageUrl}" alt="${event.title}" class="tile-bg" loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/600x400/cccccc/ffffff?text=Beeld+niet+beschikbaar';">
                 <div class="event-tile-content">
@@ -63,7 +59,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     </div>
                 </div>
             `;
-            
             tile.addEventListener('click', () => openModal(event.id));
             tile.addEventListener('keydown', (e) => {
                 if (e.key === 'Enter' || e.key === ' ') {
@@ -78,11 +73,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const openModal = (eventId) => {
         const event = events.find(e => e.id === eventId);
         if (!event) return;
-
-        const galleryImages = event.imageGallery.map(url => 
-            `<img src="${url}" alt="Sfeerfoto" loading="lazy" onerror="this.style.display='none'">`
-        ).join('');
-
+        const galleryImages = event.imageGallery.map(url => `<img src="${url}" alt="Sfeerfoto" loading="lazy" onerror="this.style.display='none'">`).join('');
         modalBody.innerHTML = `
             <img src="${event.imageUrl}" alt="${event.title}" class="modal-gallery-header" loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/800x250/cccccc/ffffff?text=Beeld+niet+beschikbaar';">
             <div class="modal-header">
@@ -111,12 +102,9 @@ document.addEventListener('DOMContentLoaded', () => {
                     </div>
                 </div>
             </div>
-            
             <div class="modal-main-content">
                 <p class="modal-description">${event.description}</p>
-                
                 ${galleryImages ? `<div class="modal-gallery">${galleryImages}</div>` : ''}
-
                 <h3 class="modal-section-title">
                     Programma
                     <span class="start-time">Start ca. ${event.startTime} uur</span>
@@ -132,23 +120,20 @@ document.addEventListener('DOMContentLoaded', () => {
                                 <span class="program-title">${p.title}</span>
                                 ${p.imdb ? `<a href="https://www.imdb.com/title/${p.imdb}" target="_blank" rel="noopener noreferrer" class="imdb-link" aria-label="Bekijk ${p.title} op IMDb">${imdbIconSvg}</a>` : ''}
                             </div>
-                            ${p.details ? `<div class="program-details">${p.details.year} • ${p.details.genres.join(', ')} • ${p.details.duration} min</div>` : ''}
+                            ${p.details ? `<div class="program-details">${p.details.year} &bull; ${p.details.genres.join(', ')} &bull; ${p.details.duration} min</div>` : ''}
                             ${p.description ? `<p class="program-description">${p.description}</p>` : ''}
                         </li>
                     `).join('')}
                 </ul>
-
                 ${event.extras && event.extras.length > 0 ? `
                     <h3 class="modal-section-title">Handig om te weten</h3>
                     <ul>${event.extras.map(e => `<li>${e}</li>`).join('')}</ul>
                 ` : ''}
-                
                 <div class="modal-links">
                     <a href="${event.website}" target="_blank" rel="noopener noreferrer">Officiële Website</a>
                     <a href="${event.gmaps}" target="_blank" rel="noopener noreferrer">Routebeschrijving</a>
                 </div>
             </div>
-
             <div class="modal-bottom-widgets">
                 <h3 class="modal-section-title">Locatie & Weer</h3>
                 <div id="weather-widget" class="weather-widget">
@@ -158,19 +143,15 @@ document.addEventListener('DOMContentLoaded', () => {
             </div>
         `;
         modal.style.display = 'block';
-        document.body.style.overflow = 'hidden'; // Prevent background scrolling
+        document.body.style.overflow = 'hidden';
         modal.setAttribute('aria-hidden', 'false');
         closeModalBtn.focus();
-        
-        // Add lightbox functionality to gallery images
         modalBody.querySelectorAll('.modal-gallery img').forEach(img => {
             img.addEventListener('click', () => {
                 lightbox.style.display = 'flex';
                 lightboxImg.src = img.src;
             });
         });
-        
-        // Render map and fetch weather after a short delay to ensure modal is visible
         setTimeout(() => {
             renderMap(event.coords.latitude, event.coords.longitude, event.title);
             fetchWeather(event.coords.latitude, event.coords.longitude);
@@ -183,47 +164,36 @@ document.addEventListener('DOMContentLoaded', () => {
             map = null;
         }
         modal.style.display = 'none';
-        document.body.style.overflow = 'auto'; // Restore background scrolling
+        document.body.style.overflow = 'auto';
         modal.setAttribute('aria-hidden', 'true');
     };
 
-    // --- MAP RENDERING (using Leaflet.js) ---
     const renderMap = (lat, lon, title) => {
-        // Check if the map container exists
         if (document.getElementById('map')) {
             map = L.map('map').setView([lat, lon], 15);
             L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
                 maxZoom: 19,
                 attribution: '© <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
             }).addTo(map);
-            L.marker([lat, lon]).addTo(map)
-                .bindPopup(`<b>${title}</b>`)
-                .openPopup();
+            L.marker([lat, lon]).addTo(map).bindPopup(`<b>${title}</b>`).openPopup();
         }
     };
 
-    // --- WEATHER WIDGET ---
     const fetchWeather = async (lat, lon) => {
         const weatherWidget = document.getElementById('weather-widget');
         const apiUrl = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&hourly=temperature_2m,weathercode&daily=weathercode,temperature_2m_max,temperature_2m_min&timezone=Europe/Amsterdam&forecast_days=5`;
-
         try {
             const response = await fetch(apiUrl);
             if (!response.ok) throw new Error('Weather data not available');
             const data = await response.json();
-            
             let forecastHtml = '<div class="weather-forecast">';
             data.daily.time.forEach((time, index) => {
                 const date = new Date(time);
                 const dayName = date.toLocaleDateString('nl-NL', { weekday: 'short' });
                 const dayDate = date.toLocaleDateString('nl-NL', { day: 'numeric', month: 'short' });
-                
-                // Find the temperature around 21:00 for the evening forecast
                 const hourIndex = data.hourly.time.findIndex(h => h.startsWith(time.split('T')[0] + 'T21:00'));
-                
                 const eveningTemp = hourIndex !== -1 ? Math.round(data.hourly.temperature_2m[hourIndex]) : '--';
                 const eveningWeatherCode = hourIndex !== -1 ? data.hourly.weathercode[hourIndex] : data.daily.weathercode[index];
-                
                 forecastHtml += `
                     <div class="weather-day">
                         <div class="day">${dayName}</div>
@@ -235,7 +205,6 @@ document.addEventListener('DOMContentLoaded', () => {
             });
             forecastHtml += '</div>';
             weatherWidget.innerHTML = forecastHtml;
-
         } catch (error) {
             weatherWidget.innerHTML = '<p>Kon de weersvoorspelling niet ophalen.</p>';
             console.error("Weather fetch error:", error);
@@ -243,54 +212,40 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     const getWeatherIcon = (code) => {
-        if ([0, 1].includes(code)) return '☀️'; // Clear, mainly clear
-        if ([2].includes(code)) return '⛅️'; // Partly cloudy
-        if ([3].includes(code)) return '☁️'; // Overcast
-        if ([45, 48].includes(code)) return '🌫️'; // Fog
-        if ([51, 53, 55, 56, 57].includes(code)) return '🌦️'; // Drizzle
-        if ([61, 63, 65, 66, 67].includes(code)) return '🌧️'; // Rain
-        if ([71, 73, 75, 77, 85, 86].includes(code)) return '❄️'; // Snow
-        if ([80, 81, 82].includes(code)) return '🌧️'; // Rain showers
-        if ([95, 96, 99].includes(code)) return '⛈️'; // Thunderstorm
+        if ([0, 1].includes(code)) return '☀️';
+        if ([2].includes(code)) return '⛅️';
+        if ([3].includes(code)) return '☁️';
+        if ([45, 48].includes(code)) return '🌫️';
+        if ([51, 53, 55, 56, 57].includes(code)) return '🌦️';
+        if ([61, 63, 65, 66, 67].includes(code)) return '🌧️';
+        if ([71, 73, 75, 77, 85, 86].includes(code)) return '❄️';
+        if ([80, 81, 82].includes(code)) return '🌧️';
+        if ([95, 96, 99].includes(code)) return '⛈️';
         return '❔';
     };
     
     const getWeatherDescription = (code) => {
-        const descriptions = {
-            0: 'Heldere hemel', 1: 'Grotendeels helder', 2: 'Gedeeltelijk bewolkt', 3: 'Bewolkt',
-            45: 'Mist', 48: 'Rijpende mist', 51: 'Lichte motregen', 53: 'Matige motregen', 55: 'Dichte motregen',
-            61: 'Lichte regen', 63: 'Matige regen', 65: 'Zware regen', 80: 'Lichte regenbuien', 81: 'Matige regenbuien',
-            82: 'Hevige regenbuien', 95: 'Onweer', 96: 'Onweer met lichte hagel', 99: 'Onweer met zware hagel'
-        };
+        const descriptions = {0:'Heldere hemel',1:'Grotendeels helder',2:'Gedeeltelijk bewolkt',3:'Bewolkt',45:'Mist',48:'Rijpende mist',51:'Lichte motregen',53:'Matige motregen',55:'Dichte motregen',61:'Lichte regen',63:'Matige regen',65:'Zware regen',80:'Lichte regenbuien',81:'Matige regenbuien',82:'Hevige regenbuien',95:'Onweer',96:'Onweer met lichte hagel',99:'Onweer met zware hagel'};
         return descriptions[code] || 'Weer onbekend';
     };
 
-    // --- FILTERING LOGIC ---
     const populateDateFilter = () => {
         const dates = new Set();
         events.forEach(event => {
             event.program.forEach(film => {
-                // Extract just the date part like "6 aug"
                 const dateMatch = film.date.match(/^(\d+\s\w+)/);
-                if(dateMatch) {
-                    dates.add(dateMatch[1]);
-                }
+                if(dateMatch) dates.add(dateMatch[1]);
             });
         });
-        
-        // Custom month order for sorting
         const monthOrder = { 'jul': 7, 'aug': 8, 'sep': 9 };
-
         const sortedDates = Array.from(dates).sort((a, b) => {
             const [dayA, monthStrA] = a.split(' ');
             const [dayB, monthStrB] = b.split(' ');
             const monthA = monthOrder[monthStrA.slice(0,3).toLowerCase()];
             const monthB = monthOrder[monthStrB.slice(0,3).toLowerCase()];
-
             if (monthA !== monthB) return monthA - monthB;
             return parseInt(dayA) - parseInt(dayB);
         });
-
         sortedDates.forEach(date => {
             const option = document.createElement('option');
             option.value = date;
@@ -303,13 +258,10 @@ document.addEventListener('DOMContentLoaded', () => {
         const dateValue = dateFilter.value;
         const priceValue = priceFilter.value;
         const districtValue = districtFilter.value;
-
         const filteredEvents = events.filter(event => {
             const priceMatch = priceValue === 'all' || event.price === priceValue;
             const districtMatch = districtValue === 'all' || event.district === districtValue;
-            // Check if any film in the program starts with the selected date
             const dateMatch = dateValue === 'all' || event.program.some(film => film.date.startsWith(dateValue));
-            
             return dateMatch && priceMatch && districtMatch;
         });
         renderEvents(filteredEvents);
@@ -322,7 +274,6 @@ document.addEventListener('DOMContentLoaded', () => {
         applyFilters();
     };
 
-    // --- FAQ LOGIC ---
     const setupFAQ = () => {
         const faqContainer = document.querySelector('.faq-container');
         const faqs = [
@@ -337,22 +288,16 @@ document.addEventListener('DOMContentLoaded', () => {
             { q: "Wat is het verschil tussen al die evenementen?", a: "Elk festival heeft zijn eigen sfeer! Van de arthouse-films bij Pluk de Nacht en de klassiekers in de chique tuin van het H'ART museum, tot de gratis buurtfeesten bij West Beach en Bijlmerbios. Er is echt voor ieder wat wils." },
             { q: "Waar vind ik de meest actuele informatie?", a: "Deze website doet zijn best om alles zo actueel mogelijk te houden, maar het programma kan altijd wijzigen. De officiële website van het evenement (de links vind je in de pop-up) is altijd de meest betrouwbare bron voor last-minute wijzigingen." }
         ];
-
         faqContainer.innerHTML = faqs.map(faq => `
             <div class="faq-item">
                 <button class="faq-question">${faq.q}</button>
-                <div class="faq-answer">
-                    <p>${faq.a}</p>
-                </div>
+                <div class="faq-answer"><p>${faq.a}</p></div>
             </div>
         `).join('');
-
         faqContainer.querySelectorAll('.faq-question').forEach(button => {
             button.addEventListener('click', () => {
                 const answer = button.nextElementSibling;
                 const isActive = button.classList.contains('active');
-                
-                // Close all other open FAQs
                 faqContainer.querySelectorAll('.faq-question.active').forEach(activeButton => {
                     if (activeButton !== button) {
                         activeButton.classList.remove('active');
@@ -360,8 +305,6 @@ document.addEventListener('DOMContentLoaded', () => {
                         activeButton.nextElementSibling.style.padding = "0 10px 0 10px";
                     }
                 });
-
-                // Toggle the clicked FAQ
                 button.classList.toggle('active', !isActive);
                 if (!isActive) {
                     answer.style.maxHeight = answer.scrollHeight + "px";
@@ -374,17 +317,12 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     };
     
-    // --- FOOTER LINKS ---
     const populateFooterLinks = () => {
-        footerLinks.innerHTML = events.map(event => `
-            <li><a href="#" data-event-id="${event.id}">${event.title}</a></li>
-        `).join('');
-        
+        footerLinks.innerHTML = events.map(event => `<li><a href="#" data-event-id="${event.id}">${event.title}</a></li>`).join('');
         footerLinks.querySelectorAll('a').forEach(link => {
             link.addEventListener('click', (e) => {
                 e.preventDefault();
                 openModal(e.target.dataset.eventId);
-                // Scroll to top to see the modal
                 window.scrollTo({ top: 0, behavior: 'smooth' });
             });
         });
@@ -392,30 +330,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- EVENT LISTENERS ---
     closeModalBtn.addEventListener('click', closeModal);
-    modal.addEventListener('click', (e) => {
-        // Close modal if the outer background is clicked
-        if (e.target === modal) {
-            closeModal();
-        }
-    });
-    document.addEventListener('keydown', (e) => {
-        // Close modal with Escape key
-        if (e.key === 'Escape' && modal.style.display === 'block') {
-            closeModal();
-        }
-    });
-    
-    closeLightboxBtn.addEventListener('click', () => {
-        lightbox.style.display = 'none';
-    });
-    lightbox.addEventListener('click', (e) => {
-        // Close lightbox if the outer background is clicked
-        if(e.target === lightbox) {
-            lightbox.style.display = 'none';
-        }
-    });
-
-    // Add listeners for filter changes
+    modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && modal.style.display === 'block') closeModal(); });
+    closeLightboxBtn.addEventListener('click', () => { lightbox.style.display = 'none'; });
+    lightbox.addEventListener('click', (e) => { if(e.target === lightbox) lightbox.style.display = 'none'; });
     dateFilter.addEventListener('change', applyFilters);
     priceFilter.addEventListener('change', applyFilters);
     districtFilter.addEventListener('change', applyFilters);
