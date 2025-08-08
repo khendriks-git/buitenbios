@@ -1,7 +1,8 @@
 :root {
     --primary-color: #3a506b;
     --secondary-color: #1c2541;
-    --accent-color: #5bc0be;
+    --accent-color: #333333; /* Zwart */
+    --button-secondary-color: #5A7D9A; /* Lichter Blauwgrijs */
     --background-color: #f0f4f8;
     --text-color: #333;
     --card-bg: #ffffff;
@@ -31,9 +32,11 @@ body {
 
 /* Header */
 .main-header {
-    background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+    background-image: linear-gradient(rgba(28, 37, 65, 0.7), rgba(28, 37, 65, 0.7)), url('https://image.parool.nl/220058609/width/2480/pluk-de-nacht-bij-het-stenen-hoofd-in-west');
+    background-size: cover;
+    background-position: center;
     color: white;
-    padding: 3rem 1rem;
+    padding: 4rem 1rem;
     text-align: center;
     margin-bottom: 2rem;
     border-bottom-left-radius: 20px;
@@ -63,6 +66,7 @@ body {
     padding: 20px;
     border-radius: var(--border-radius);
     box-shadow: var(--shadow);
+    align-items: flex-end;
 }
 
 .filter-group {
@@ -92,6 +96,22 @@ body {
     background-size: 16px 12px;
 }
 
+.reset-btn {
+    background: none;
+    border: 1px solid #ccc;
+    padding: 12px 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    color: #555;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.9rem;
+    transition: all 0.2s ease;
+}
+.reset-btn:hover {
+    background-color: #eee;
+    border-color: #aaa;
+}
+
 /* Events Grid */
 .events-grid {
     display: grid;
@@ -100,7 +120,7 @@ body {
 }
 
 .event-tile {
-    background-color: var(--card-bg);
+    background-color: var(--secondary-color);
     border-radius: var(--border-radius);
     overflow: hidden;
     box-shadow: var(--shadow);
@@ -108,6 +128,35 @@ body {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     display: flex;
     flex-direction: column;
+    position: relative;
+    color: white;
+    min-height: 250px;
+}
+
+.event-tile img.tile-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+    transition: transform 0.4s ease;
+}
+
+.event-tile::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.1) 60%, rgba(0,0,0,0.8) 100%);
+    z-index: 2;
+}
+
+.event-tile:hover img.tile-bg {
+    transform: scale(1.05);
 }
 
 .event-tile:hover {
@@ -120,23 +169,25 @@ body {
     flex-grow: 1;
     display: flex;
     flex-direction: column;
+    justify-content: flex-end;
+    position: relative;
+    z-index: 3;
 }
 
 .event-tile h2 {
     margin: 0 0 10px 0;
     font-size: 1.5rem;
-    color: var(--secondary-color);
+    color: white;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
 }
 
 .event-info {
     margin-top: auto;
-    padding-top: 15px;
-    border-top: 1px solid #eee;
     display: flex;
     justify-content: space-between;
     align-items: center;
     font-size: 0.9rem;
-    color: #555;
+    color: rgba(255,255,255,0.9);
     flex-wrap: wrap;
     gap: 10px;
 }
@@ -148,9 +199,15 @@ body {
     font-size: 0.8rem;
 }
 
-.tag.price-free { background-color: #e6f9f0; color: #00875a; }
-.tag.price-paid { background-color: #fff4e5; color: #ff8c00; }
-.tag.lang-en, .tag.lang-en-nl { background-color: #eaf2ff; color: #0052cc; }
+.district-centrum { background-color: #e6f9f0; color: #00875a; }
+.district-noord { background-color: #eaf2ff; color: #0052cc; }
+.district-zuid { background-color: #fff4e5; color: #ff8c00; }
+.district-west { background-color: #f3e5f5; color: #8e24aa; }
+.district-nieuwwest { background-color: #e0f2f1; color: #00796b; }
+.district-zuidoost { background-color: #fffde7; color: #fbc02d; }
+.district-oost { background-color: #e3f2fd; color: #1565c0; }
+.district-amstelveen { background-color: #ffebee; color: #c62828; }
+
 
 .no-results {
     background-color: var(--card-bg);
@@ -160,6 +217,107 @@ body {
     font-size: 1.2rem;
     color: #777;
 }
+
+/* Extra Content Sections */
+.content-section {
+    background-color: white;
+    padding: 30px;
+    margin-top: 2.5rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+}
+.content-section h2 {
+    font-size: 2rem;
+    color: var(--secondary-color);
+    margin-top: 0;
+    border-bottom: 3px solid var(--accent-color);
+    padding-bottom: 10px;
+}
+.two-column-layout {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 30px;
+    align-items: center;
+}
+@media (min-width: 768px) {
+    .two-column-layout {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+.two-column-layout img {
+    width: 100%;
+    border-radius: var(--border-radius);
+    max-height: 300px;
+    object-fit: cover;
+}
+
+.banner-section {
+    text-align: center;
+    font-size: 1.2rem;
+    color: #777;
+    padding: 50px 30px;
+}
+
+.streaming-section {
+    text-align: center;
+}
+.streaming-logos {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    margin-top: 20px;
+}
+.streaming-logos a {
+    display: inline-block;
+}
+.streaming-logos img {
+    height: 40px;
+    filter: grayscale(100%);
+    transition: filter 0.3s ease;
+}
+.streaming-logos img:hover {
+    filter: grayscale(0%);
+}
+
+/* FAQ Accordion */
+.faq-item {
+    border-bottom: 1px solid #eee;
+}
+.faq-question {
+    width: 100%;
+    background: none;
+    border: none;
+    text-align: left;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    padding: 20px 0;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--primary-color);
+}
+.faq-question::after {
+    content: '+';
+    font-size: 1.5rem;
+    transition: transform 0.3s ease;
+}
+.faq-question.active::after {
+    transform: rotate(45deg);
+}
+.faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease, padding 0.3s ease;
+}
+.faq-answer p {
+    margin: 0;
+    padding: 0 10px 20px 10px;
+}
+
 
 /* Modal */
 .modal {
@@ -192,41 +350,91 @@ body {
 }
 
 .modal-close {
-    color: #aaa;
+    color: #555;
     position: absolute;
     top: 15px;
-    right: 25px;
+    right: 15px;
     font-size: 32px;
     font-weight: bold;
     cursor: pointer;
-    background: none;
+    background: rgba(255,255,255,0.7);
     border: none;
-    line-height: 1;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    z-index: 10;
+    transition: all 0.2s;
+}
+.modal-close:hover {
+    color: #000;
+    background: rgba(255,255,255,0.9);
 }
 
 .modal-body {
+    padding: 0;
+}
+
+.modal-header {
     padding: 30px 40px;
+    position: relative;
 }
 
 .modal-header h2 {
     color: var(--secondary-color);
     font-size: 2.2rem;
-    margin: 0 0 5px 0;
+    margin: 0 120px 5px 0;
 }
 
-.modal-header .location {
+.modal-ticket-btn {
+    position: absolute;
+    top: 30px;
+    right: 40px;
+    background-color: var(--accent-color);
+    color: white;
+    text-decoration: none;
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: all 0.3s;
+}
+.modal-ticket-btn:hover {
+    background-color: #111;
+    transform: translateY(-2px);
+}
+
+.modal-info-bar {
     display: flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 1.1rem;
+    flex-wrap: wrap;
+    gap: 10px 20px;
+    font-size: 1rem;
     color: #555;
     margin-bottom: 15px;
 }
-
-.modal-header .location-icon {
+.modal-info-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.modal-info-item a {
+    color: inherit;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.modal-info-item a:hover {
+    text-decoration: underline;
+}
+.info-icon {
     width: 18px;
     height: 18px;
     flex-shrink: 0;
+}
+
+.modal-main-content {
+    padding: 0 40px 30px 40px;
 }
 
 .modal-description {
@@ -240,6 +448,14 @@ body {
     border-bottom: 3px solid var(--accent-color);
     padding-bottom: 8px;
     margin: 35px 0 20px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+}
+.start-time {
+    font-size: 1rem;
+    font-weight: 400;
+    color: #555;
 }
 
 .program-list {
@@ -250,24 +466,98 @@ body {
 .program-list li {
     padding: 12px 0;
     border-bottom: 1px solid #eee;
+}
+.program-list li:last-child { border-bottom: none; }
+.program-item-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     gap: 15px;
 }
-.program-list li:last-child { border-bottom: none; }
 .program-date { font-weight: 600; flex-shrink: 0; color: var(--primary-color); }
 .program-title { flex-grow: 1; }
+.program-details {
+    font-size: 0.85rem;
+    color: #666;
+    padding-left: 10px;
+    margin-top: 4px;
+}
+.program-description {
+    font-size: 0.9rem;
+    color: #444;
+    margin-top: 8px;
+    padding-left: 10px;
+}
 
 .imdb-link { display: inline-block; margin-left: 10px; }
 .imdb-link img { height: 20px; vertical-align: middle; transition: transform 0.2s; }
 .imdb-link:hover img { transform: scale(1.1); }
 
-/* Weather Widget */
-.weather-widget {
+/* Image Gallery */
+.modal-gallery-header {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-top-left-radius: var(--border-radius);
+    border-top-right-radius: var(--border-radius);
+}
+.modal-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 10px;
+    margin-top: 20px;
+}
+.modal-gallery img {
+    width: 100%;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: opacity 0.3s;
+}
+.modal-gallery img:hover {
+    opacity: 0.8;
+}
+
+/* Lightbox for gallery images */
+.lightbox {
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    left: 0; top: 0;
+    width: 100%; height: 100%;
+    background-color: rgba(0,0,0,0.9);
+    justify-content: center;
+    align-items: center;
+}
+.lightbox img {
+    max-width: 90%;
+    max-height: 80%;
+}
+.lightbox-close {
+    position: absolute;
+    top: 20px; right: 30px;
+    color: #fff;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* Weather & Map */
+.modal-bottom-widgets {
+    padding: 20px 40px;
     background-color: var(--background-color);
+    margin-top: 20px;
+}
+
+#map {
+    height: 250px;
     border-radius: var(--border-radius);
-    padding: 20px;
+    margin-top: 20px;
+    z-index: 1;
+}
+
+.weather-widget {
     text-align: center;
 }
 .weather-forecast {
@@ -280,8 +570,9 @@ body {
     flex: 1;
     min-width: 80px;
 }
-.weather-day .day { font-weight: 600; }
-.weather-day .icon { font-size: 2.5rem; margin: 5px 0; }
+.weather-day .day { font-weight: 600; font-size: 0.9rem; }
+.weather-day .date { font-size: 0.8rem; color: #666; }
+.weather-day .icon { font-size: 2rem; margin: 2px 0; }
 .weather-day .temp { font-size: 0.9rem; }
 
 /* Links and Buttons */
@@ -305,7 +596,7 @@ body {
     border: 2px solid transparent;
 }
 .modal-links a.secondary {
-    background-color: var(--secondary-color);
+    background-color: var(--button-secondary-color);
 }
 .modal-links a:hover {
     transform: translateY(-3px);
@@ -319,6 +610,31 @@ body {
     margin-top: 3rem;
     background-color: var(--secondary-color);
     color: rgba(255, 255, 255, 0.7);
+}
+.footer-links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 20px;
+    list-style: none;
+    padding: 0;
+}
+.footer-links a {
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    cursor: pointer;
+}
+.footer-links a:hover {
+    text-decoration: underline;
+}
+.footer-contact {
+    margin-bottom: 10px;
+}
+.footer-credit {
+    font-size: 0.8rem;
+    opacity: 0.6;
 }
 .disclaimer {
     font-size: 0.8rem;

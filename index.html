@@ -4,9 +4,6 @@
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   <meta http-equiv="Content-Style-Type" content="text/css">
   <title></title>
-  <meta name="Author" content="Buitenbios Amsterdam Gids">
-  <meta name="Description" content="Vind alle openluchtbioscopen, buitenfilms en open-air cinema in Amsterdam voor augustus en september 2025. Filter op datum, locatie en prijs. Inclusief programma, links en live weerbericht.">
-  <meta name="Keywords" content="buitenbioscoop, openluchtbioscoop, open air cinema, Amsterdam, film, 2025, augustus, september, Pluk de Nacht, Movies at H'ART, West Beach Film Festival, Pllek, Cinetree">
   <meta name="Generator" content="Cocoa HTML Writer">
   <meta name="CocoaVersion" content="2487.6">
   <style type="text/css">
@@ -25,7 +22,7 @@
 <p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;!-- SEO Tags --&gt;</span></p>
 <p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;title&gt;Buitenbios Amsterdam 2025 | De Ultieme Gids voor Openluchtcinema&lt;/title&gt;</span></p>
 <p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;meta name="description" content="Vind alle openluchtbioscopen, buitenfilms en open-air cinema in Amsterdam voor augustus en september 2025. Filter op datum, locatie en prijs. Inclusief programma, links en live weerbericht."&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;meta name="keywords" content="buitenbioscoop, openluchtbioscoop, open air cinema, Amsterdam, film, 2025, augustus, september, Pluk de Nacht, Movies at H'ART, West Beach Film Festival, Pllek, Cinetree"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;meta name="keywords" content="buitenbioscoop, openluchtbioscoop, open air cinema, Amsterdam, film, 2025, augustus, september, Pluk de Nacht, Movies at H'ART, West Beach Film Festival, Pllek, Cinetree, Cityscape Cinema"&gt;</span></p>
 <p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;meta name="author" content="Buitenbios Amsterdam Gids"&gt;</span></p>
 <p class="p2"><span class="s1"></span><br></p>
 <p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;!-- Social Media / Open Graph --&gt;</span></p>
@@ -33,7 +30,7 @@
 <p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;meta property="og:description" content="Alle openlucht filmavonden in Amsterdam (aug/sep 2025) op één plek."&gt;</span></p>
 <p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;meta property="og:type" content="website"&gt;</span></p>
 <p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;meta property="og:url" content="https://jouw-website-url.nl"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;meta property="og:image" content="https://jouw-website-url.nl/assets/og-image.jpg"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;meta property="og:image" content="https://image.parool.nl/220058609/width/1280/pluk-de-nacht-bij-het-stenen-hoofd-in-west"&gt;</span></p>
 <p class="p2"><span class="s1"><span class="Apple-converted-space">    </span></span></p>
 <p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;!-- Styles and Fonts --&gt;</span></p>
 <p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;link rel="stylesheet" href="style.css"&gt;</span></p>
@@ -41,6 +38,9 @@
 <p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;link rel="preconnect" href="https://fonts.googleapis.com"&gt;</span></p>
 <p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;link rel="preconnect" href="https://fonts.gstatic.com" crossorigin&gt;</span></p>
 <p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&amp;display=swap" rel="stylesheet"&gt;</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;!-- Leaflet CSS for Map --&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/&gt;</span></p>
 <p class="p1"><span class="s1">&lt;/head&gt;</span></p>
 <p class="p1"><span class="s1">&lt;body&gt;</span></p>
 <p class="p2"><span class="s1"></span><br></p>
@@ -55,11 +55,9 @@
 <p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;!-- Filter Section --&gt;</span></p>
 <p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;section id="filters" class="filter-section"&gt;</span></p>
 <p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;div class="filter-group"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;label for="date-filter"&gt;Filter op maand:&lt;/label&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;select id="date-filter" aria-label="Filter op maand"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;option value="all"&gt;Alle Data&lt;/option&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;option value="august"&gt;Augustus&lt;/option&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;option value="september"&gt;September&lt;/option&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;label for="date-filter"&gt;Filter op dag:&lt;/label&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;select id="date-filter" aria-label="Filter op dag"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;option value="all"&gt;Alle Dagen&lt;/option&gt;</span></p>
 <p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;/select&gt;</span></p>
 <p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</span></p>
 <p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;div class="filter-group"&gt;</span></p>
@@ -76,19 +74,64 @@
 <p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;option value="all"&gt;Alle Stadsdelen&lt;/option&gt;</span></p>
 <p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;option value="Centrum"&gt;Centrum&lt;/option&gt;</span></p>
 <p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;option value="Noord"&gt;Noord&lt;/option&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;option value="Oost"&gt;Oost&lt;/option&gt;</span></p>
 <p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;option value="West"&gt;West&lt;/option&gt;</span></p>
 <p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;option value="Nieuw-West"&gt;Nieuw-West&lt;/option&gt;</span></p>
 <p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;option value="Zuid"&gt;Zuid&lt;/option&gt;</span></p>
 <p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;option value="Zuidoost"&gt;Zuidoost&lt;/option&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;option value="Oost"&gt;Oost&lt;/option&gt;</span></p>
 <p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;/select&gt;</span></p>
 <p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;button id="reset-filters-btn" class="reset-btn"&gt;Reset filters&lt;/button&gt;</span></p>
 <p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;/section&gt;</span></p>
 <p class="p2"><span class="s1"></span><br></p>
 <p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;!-- Events Grid --&gt;</span></p>
 <p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;section id="events-grid" class="events-grid" aria-live="polite"&gt;</span></p>
 <p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;!-- Event tegels worden hier door JavaScript ingevoegd --&gt;</span></p>
 <p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;/section&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;div class="container"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;section class="content-section"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                 </span>&lt;div class="two-column-layout"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;h2&gt;Film Kijken Onder de Sterren in Amsterdam&lt;/h2&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;p&gt;Zodra de zomeravonden in Amsterdam langer en warmer worden, verandert de stad in één grote openluchtbioscoop. Van gezellige stadsparken tot unieke dakterrassen en de industriële NDSM-werf; overal kun je genieten van de beste films onder de sterrenhemel. Pak een dekentje, wat lekkers te drinken en geniet van de unieke sfeer van cinema in de open lucht.&lt;/p&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;img src="https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?q=80&amp;w=2070&amp;auto=format&amp;fit=crop" alt="Mensen bij een openlucht evenement"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;/section&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;section class="content-section"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;div class="two-column-layout"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                     </span>&lt;img src="https://images.unsplash.com/photo-1517604931442-7e0c8ed2963e?q=80&amp;w=2070&amp;auto=format&amp;fit=crop" alt="Filmprojector in de buitenlucht" style="order: 2;"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;div style="order: 1;"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;h2&gt;Voor Ieder Wat Wils&lt;/h2&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;p&gt;Of je nu op zoek bent naar een blockbuster, een arthouse-parel of een gratis buurtfilm, de buitenbios in Amsterdam biedt voor ieder wat wils. Deze gids helpt je de perfecte filmavond te vinden in augustus en september 2025!&lt;/p&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;/section&gt;</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;section class="banner-section"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>Hier is ruimte voor een banner</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;/section&gt;</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;section class="content-section faq-section"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;h2&gt;Veelgestelde Vragen&lt;/h2&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;div class="faq-container"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;!-- FAQ items worden hier door JavaScript ingevoegd --&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;/section&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">            </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;section class="content-section streaming-section"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;h2&gt;Nét gemist?&lt;/h2&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;p&gt;Geen nood, je kan veel van deze films terugkijken op onderstaande streamingdiensten:&lt;/p&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;div class="streaming-logos"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;a href="https://picl.nl/" target="_blank" rel="noopener noreferrer"&gt;&lt;img src="https://www.beeldengeluid.nl/storage/inline-images/picl-logo.png" alt="Picl logo"&gt;&lt;/a&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;a href="https://mubi.com/" target="_blank" rel="noopener noreferrer"&gt;&lt;img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/MUBI_logo.svg/1280px-MUBI_logo.svg.png" alt="MUBI logo"&gt;&lt;/a&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;a href="https://www.cinemember.nl/" target="_blank" rel="noopener noreferrer"&gt;&lt;img src="https://www.cinemember.nl/logo.png" alt="Cinemember logo"&gt;&lt;/a&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;a href="https://www.mejane.com/" target="_blank" rel="noopener noreferrer"&gt;&lt;img src="https://www.mejane.com/images/mejane-logo.svg" alt="MeJane logo"&gt;&lt;/a&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;/section&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"></span><br></p>
 <p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/main&gt;</span></p>
 <p class="p2"><span class="s1"></span><br></p>
 <p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;!-- Modal for Event Details --&gt;</span></p>
@@ -100,13 +143,27 @@
 <p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</span></p>
 <p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</span></p>
 <p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;!-- Lightbox for Gallery Images --&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;div id="lightbox" class="lightbox"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;span class="lightbox-close"&gt;&amp;times;&lt;/span&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;img class="lightbox-content" id="lightbox-img"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"></span><br></p>
 <p class="p2"><span class="s1"></span><br></p>
 <p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;footer class="main-footer"&gt;</span></p>
 <p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;div class="container"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;p&gt;&amp;copy; 2025 Buitenbios Amsterdam. Alle rechten voorbehouden.&lt;/p&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;ul class="footer-links" id="footer-links"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;!-- Footer links worden hier door JavaScript ingevoegd --&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;/ul&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;p class="footer-contact"&gt;Heb je een vraag of zie je onjuiste informatie? Neem contact op met XXX@buitenbiosamsterdam.nl&lt;/p&gt;</span></p>
 <p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;p class="disclaimer"&gt;Deze site is een onafhankelijke gids. Controleer altijd de officiële websites voor de meest actuele informatie en eventuele wijzigingen.&lt;/p&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;p class="footer-credit"&gt;Made with ♥️ in Amsterdam&lt;/p&gt;</span></p>
 <p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</span></p>
 <p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/footer&gt;</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;!-- Leaflet JS for Map --&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""&gt;&lt;/script&gt;</span></p>
 <p class="p2"><span class="s1"></span><br></p>
 <p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;!-- Scripts --&gt;</span></p>
 <p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;script src="events.js"&gt;&lt;/script&gt;</span></p>
